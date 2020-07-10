@@ -1,5 +1,5 @@
-{
-    "require": {
-        "elasticsearch/elasticsearch": "v7.6.x"
+    {
+        "require": {
+            "elasticsearch/elasticsearch": "^7.0"
+        }
     }
-}

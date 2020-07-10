@@ -3,8 +3,27 @@
 
 //adding content to elastic search db on form post request
 	if( !empty($_POST) ) {
-		if( isset( $_POST[ 'title'] ) && isset( $_POST[ 'body'] ) && isset( $_POST[ 'keywords'] ) ) {
-			$title = 
+		if( isset( $_POST[ 'title' ] ) && isset( $_POST[ 'body' ] ) && isset( $_POST[ 'keywords' ] ) ) {
+			$title = $_POST[ 'title' ];
+			$body = $_POST[ 'body' ];
+			$keywords = explode( ",", $_POST[ 'keywords' ] );
+
+		//sending post rqst to elastic search server to insert the form data 
+			$indexed = $client->index([
+				'index' => 'articles',
+				'type' => 'article',
+				'body' => [
+					'title' => $title,
+					'body' => $body,
+					'keywords' => $keywords
+				]
+			]);
+
+			if( $indexed ) {
+				print_r( $indexed );
+			} else {
+				echo "failed to insert form data in elastic search server db";
+			}
 		}
 	}
 ?>
@@ -39,7 +58,7 @@
 		<br/><br/>
 		<label>
 			Keywords
-			<input type="text" name="Kkeywords" placeholder="comma, seperated" />
+			<input type="text" name="keywords" placeholder="comma, seperated" />
 		</label>
 		<br/><br/>
 		<input type="submit" value="Add" />

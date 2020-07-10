@@ -1,5 +1,10 @@
 <?php
-    require_once 'vendor/autoload.php';
-	use Elasticsearch\ClientBuilder;
-	$client = ClientBuilder::create()->setHosts(['127.0.0.1:9200'])->build();
+   use Elasticsearch\ClientBuilder;
+
+    require 'vendor/autoload.php';
+
+    $client = ClientBuilder::create()->build();
+    
+	$results = $client->search([]);
+	print_r($results);
 ?>
