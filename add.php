@@ -1,3 +1,14 @@
+<?php
+	require_once('app/init.php');
+
+//adding content to elastic search db on form post request
+	if( !empty($_POST) ) {
+		if( isset( $_POST[ 'title'] ) && isset( $_POST[ 'body'] ) && isset( $_POST[ 'keywords'] ) ) {
+			$title = 
+		}
+	}
+?>
+
 <html>
 	<head>
 		<title>Add | Search Engine</title>

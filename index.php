@@ -1,3 +1,7 @@
+<?php
+	require_once('app/init.php');
+?>
+
 <html>
 	<head>
 		<title>Search Engine</title>
